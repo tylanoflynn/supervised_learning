@@ -10,6 +10,7 @@ class JSONFramer:
         self.directory = dir
         self.file_list = self._get_file_list()
         self.dataframe = pd.DataFrame()
+        # self.dropna_target = 
     
     #defining function to be used to pull values by indexed key from JSON files 
     def _get_nested_value(self, data, *keys):
@@ -19,10 +20,14 @@ class JSONFramer:
             return data
         except (TypeError, KeyError):
             return None
+
+    #returns list of files in the given directory
+    def _get_file_list(self):
+        return os.listdir(self.directory)  
     
-    #
+    #Create dataframe, loop through json files to and iterate through JSON data to assign dataframe columns and values
     def frame(self, eda = False, eda_limit = 5):
-        #loop to limit data used in exploratory data analysi
+        #loop to limit data used in exploratory data analysis
         i = 0
         for file in self.file_list:
             i += 1
@@ -76,9 +81,9 @@ class JSONFramer:
             except:
                 continue
         return self.dataframe
-  
-    def _get_file_list(self):
-        return os.listdir(self.directory)
-        
     
-        
+    #drop all rows where model's target variable ('sold_price') is null
+    def dropna_target(self):
+        self.dataframe.dropna(subset=['sold_price'], inplace=True)
+        self.dataframe.reset_index(drop=True, inplace=True)
+        return self.dataframe

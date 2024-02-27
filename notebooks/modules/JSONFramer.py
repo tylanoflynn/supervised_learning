@@ -17,8 +17,13 @@ class JSONFramer:
         except (TypeError, KeyError):
             return None
         
-    def frame(self):
+    def frame(self, eda = False, eda_limit = 5):
+        i = 0
         for file in self.file_list:
+            i += 1
+            if eda == True:
+                if i == eda_limit:
+                    break
             try:
                 #load json object
                 with open('../data/' + file) as f:
@@ -75,7 +80,10 @@ class JSONFramer:
                             'tags': self._get_nested_value(result, 'tags'),
                         }
                         extracted_data.append(row)
-                extracted_dataframe = pd.DataFrame(extracted_data).drop_duplicates("property_id")
+                if not eda:
+                    extracted_dataframe = pd.DataFrame(extracted_data).drop_duplicates("property_id")
+                else:
+                    extracted_dataframe = pd.DataFrame(extracted_data)
                 self.dataframe = pd.concat([self.dataframe, extracted_dataframe])
             except:
                 continue

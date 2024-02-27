@@ -87,6 +87,7 @@ class JSONFramer:
                 self.dataframe = pd.concat([self.dataframe, extracted_dataframe])
             except:
                 continue
+        return self.dataframe
   
     def _get_file_list(self):
         return os.listdir(self.directory)

@@ -24,5 +24,5 @@ class TargetAverager(BaseEstimator, TransformerMixin):
 
     def transform(self, X, y=None):
         X = X.merge(self.ct, left_on=self.group_by_feature, right_index=True, how='left')
-        # X = X.drop(labels=self.group_by_feature, axis=1)
+        X = X.drop(labels=self.group_by_feature, axis=1)
         return X

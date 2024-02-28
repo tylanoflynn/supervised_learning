@@ -4,13 +4,14 @@ import os
 import json
 
 class JSONFramer:
-   
     #initialize a single instance of JSONFramer
     def __init__(self, dir):
         self.directory = dir
         self.file_list = self._get_file_list()
         self.dataframe = pd.DataFrame()
-        # self.dropna_target = 
+
+    def print_stuff(self):
+        print("stuff")
     
     #defining function to be used to pull values by indexed key from JSON files 
     def _get_nested_value(self, data, *keys):
@@ -23,7 +24,13 @@ class JSONFramer:
 
     #returns list of files in the given directory
     def _get_file_list(self):
-        return os.listdir(self.directory)  
+        return os.listdir(self.directory)
+    
+    #drop all rows where model's target variable ('sold_price') is null
+    def dropna_target(self):
+        self.dataframe.dropna(subset=['sold_price'], inplace=True)
+        self.dataframe.reset_index(drop=True, inplace=True)
+        return self.dataframe
     
     #Create dataframe, loop through json files to and iterate through JSON data to assign dataframe columns and values
     def frame(self, eda = False, eda_limit = 5):
@@ -82,8 +89,3 @@ class JSONFramer:
                 continue
         return self.dataframe
     
-    #drop all rows where model's target variable ('sold_price') is null
-    def dropna_target(self):
-        self.dataframe.dropna(subset=['sold_price'], inplace=True)
-        self.dataframe.reset_index(drop=True, inplace=True)
-        return self.dataframe

@@ -158,46 +158,6 @@ We definitely have insufficient data. The city with the largest amount of data i
 2. Try more computationally expensive models: We were somewhat limited by computing power while working on these initial models. There could be value in trying models such as SVM or FNN. We would also like to try DBSCAN for identifying more fine-tuned structure in the geographic distribution of the houses (latitude, longitude) and see if this grouping provides interesting results.
 3. While many tuning passes were made, we were limited by time in how many we could make. It is possible that more passes would yield better results. Although, the difference between out-of-the-box random forest and tuned random forest is around $4000 RMSE, so maybe tuning will be more relevant for other models. At the moment, random forest is the best performing.
 
-{'model': RandomForestRegressor(min_samples_split=5), 'model__min_samples_split': 5, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 44}
-R2:0.7056662139280132
-RMSE:155464.50029859363
-
-{'model': RandomForestRegressor(min_samples_split=6), 'model__min_samples_split': 6, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 44}
-R2:0.7177127158606593
-RMSE:150527.32391236164
-
-{'model': RandomForestRegressor(min_samples_split=7), 'model__min_samples_split': 7, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 52}
-R2:0.6679173185988708
-RMSE:161533.5962821743
-
-{'model': RandomForestRegressor(min_samples_split=4), 'model__min_samples_split': 4, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 44}
-R2:0.7050026593780689
-RMSE:153513.3676749753
-
-{'model': RandomForestRegressor(min_samples_split=7), 'model__min_samples_split': 7, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 44}
-R2:0.698748484423361
-RMSE:149447.15241166018
-
-{'model': RandomForestRegressor(min_samples_split=6), 'model__min_samples_split': 6, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 36}
-R2:0.6744893502133642
-RMSE:158758.89152011194
-
-{'model': RandomForestRegressor(min_samples_split=8), 'model__min_samples_split': 8, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 28}
-R2:0.6290417250587398
-RMSE:174231.6083363113
-
-{'model': RandomForestRegressor(min_samples_split=7), 'model__min_samples_split': 7, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 60}
-R2:0.6681815043143517
-RMSE:170342.76141113337
-
-{'model': RandomForestRegressor(min_samples_split=7), 'model__min_samples_split': 7, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 52}
-R2:0.7048233196700822
-RMSE:162046.60142513548
-
-{'model': RandomForestRegressor(min_samples_split=5), 'model__min_samples_split': 5, 'model__n_estimators': 100, 'preprocessing__num__skbest__k': 44}
-R2:0.6699809527674909
-RMSE:163549.83377448845
-
 
 
 
